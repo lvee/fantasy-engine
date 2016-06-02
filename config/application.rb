@@ -23,8 +23,6 @@ module Lvee
     # config.i18n.default_locale = :de
     config.active_record.schema_format = :sql
 
-    config.assets.version = '1.0' #TODO
-
     config.action_controller.cache_store = :file_store, File.join(Rails.root, "cache") #TODO
 
     config.generators do |g|
@@ -33,6 +31,8 @@ module Lvee
       g.test_framework  :rspec, :fixture => false
       g.stylesheets     false
     end
-    #END TODO
+
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end
